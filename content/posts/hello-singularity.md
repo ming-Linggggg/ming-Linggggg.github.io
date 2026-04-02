@@ -2,7 +2,7 @@
 title: "Hello Singularity"
 subtitle_zh: "你好，奇点"
 date: 2026-02-17T13:39:15+08:00
-draft: false
+draft: true
 tags: ["Thought", "Physics", "Intro"]
 ---
 
