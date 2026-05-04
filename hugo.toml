@@ -1,6 +1,6 @@
 baseURL = 'https://x-s-singularity-notes.vercel.app/'
 languageCode = 'en-us'
-title = "X's Singularity Notes"
+title = "林记蛋炒饭"
 theme = "PaperMod"
 
 [params]
@@ -22,6 +22,19 @@ theme = "PaperMod"
         enabled = false
 
 [menu]
+# 1. 阿明的分区入口
+    [[menu.main]]
+        identifier = "aming"
+        name = "阿明"               # 网页顶部菜单显示的中文名
+        url = "/categories/aming/"  # 指向我们刚才设置的拼音分类
+        weight = 10
+
+    # 2. 阿静的分区入口
+    [[menu.main]]
+        identifier = "ajing"
+        name = "阿静"
+        url = "/categories/ajing/"
+        weight = 20
     [[menu.main]]
         identifier = "posts"
         name = "ARTICLES"
