@@ -18,8 +18,26 @@ theme = "PaperMod"
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
 
+    homeInfoParams = { align = "center" } 
+    # 加上下面这行，开启在主页模式下展示文章列表
+    mainSections = ["posts"]
+
     [params.profileMode]
-        enabled = false
+        enabled = true
+        title = "欢迎来到阿明与阿静的奇妙空间 🌌"  # 这是头像下方的大标题
+        imageUrl = "/images/1.jpg" # 这里的路径直接对应 static 文件夹内部
+        imageWidth = 130 # 头像的宽度（可以根据喜好调整数字大小）
+        imageHeight = 170 # 头像的高度
+        imageTitle = "家静业明" # 鼠标悬停在头像上时显示的提示文字
+
+        # 下面这段是超级加分项：在欢迎语下方生成两个按钮，分别指向阿明和阿静的分区！
+    [[params.profileMode.buttons]]
+        name = "👨‍💻 前往阿明的频道"
+        url = "/categories/aming/" # 注意：这里的 url 需要与你文章中 categories 配置的拼音/英文一致
+    
+    [[params.profileMode.buttons]]
+        name = "👩‍🎨 前往阿静的频道"
+        url = "/categories/ajing/" # 同上，需与实际底部分类路径一致
 
 [menu]
 # 1. 阿明的分区入口
