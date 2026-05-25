@@ -53,6 +53,8 @@ theme = "PaperMod"
         name = "阿静"
         url = "/categories/ajing/"
         weight = 20
+
+
     [[menu.main]]
         identifier = "posts"
         name = "ARTICLES"
@@ -63,6 +65,13 @@ theme = "PaperMod"
         name = "SEARCH"
         url = "/search/"
         weight = 20
+
+
+    [[menu.main]]
+        identifier = "100days"
+        name = "💖 100 Days"
+        url = "/100days/"
+        weight = 30   # weight 决定排序，数字越大越靠后
 
 [outputs]
     home = ["HTML", "RSS", "JSON"]
