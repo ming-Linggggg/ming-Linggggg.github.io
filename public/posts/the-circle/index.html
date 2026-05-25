@@ -61,7 +61,7 @@
 人生不过短短几十年，可是过起来又是那么的漫长。">
 <meta name="author" content="X">
 <link rel="canonical" href="http://localhost:1313/posts/the-circle/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4ef2299ae814559c4055cd3d15919aff78737e44fa7af337c506246832ba458a.css" integrity="sha256-TvIpmugUVZxAVc09FZGa/3hzfkT6evM3xQYkaDK6RYo=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.90622b408079174024aa996c6991a52d971ad39d0dc40655499175c04d8dd59c.css" integrity="sha256-kGIrQIB5F0AkqplsaZGlLZca050NxAZVSZF1wE2N1Zw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -78,7 +78,54 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="http://localhost:1313/posts/the-circle/">
+</noscript><style>
+    .falling-item {
+        position: fixed;
+        top: -10%;
+        z-index: 9999;
+        user-select: none;
+         
+        pointer-events: none; 
+        animation: fall linear forwards;
+    }
+    
+     
+    @keyframes fall {
+        0% { transform: translateY(-10vh) rotate(0deg) scale(1); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg) scale(0.5); opacity: 0; }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        const items = ['🌸', '💖', '✨']; 
+        
+        
+        const effectInterval = setInterval(() => {
+            const item = document.createElement('div');
+            item.className = 'falling-item';
+            
+            
+            item.innerText = items[Math.floor(Math.random() * items.length)];
+            
+            
+            item.style.left = Math.random() * 100 + 'vw';
+            
+            
+            item.style.animationDuration = (Math.random() * 3 + 4) + 's'; 
+            
+            
+            item.style.fontSize = (Math.random() * 15 + 10) + 'px'; 
+            
+            document.body.appendChild(item);
+
+            
+            setTimeout(() => { item.remove(); }, 7000);
+            
+        }, 200); 
+    });
+</script><meta property="og:url" content="http://localhost:1313/posts/the-circle/">
   <meta property="og:site_name" content="林记蛋炒饭">
   <meta property="og:title" content="the circle of one thing">
   <meta property="og:description" content="我时常在想一个人反复思考某一件事，是在思考这件事本身，还是钻入了牛角尖。不得而知，除非有第二个人告知，或是放弃去思考。 2026.4.1 今天抖音刷到一条评论“不知道自己为什么这么能熬，第三天了还是只有困意却无法入眠” 看到这句话我不知道我在想什么，我觉得我想对自己说一句话，也把这句话送给了这个素未谋面的仅是偶尔刷到的一条评论的陌生人 “希望万事归于平淡，朝前迈出半步就好”“祝好”“祝我们都好”“未来灿烂” 可是，我知道这个陌生人在第四天或者第五天的时候，他的身体会帮助它修复睡眠问题 而我 我不懂，我不懂为何人可以自私自利，懦弱到伤害别人来维护自己的美好形象。我不懂，我不懂自私凉薄到极致的那群人可以把自私变成一把利剑，毫不犹豫地刺向别人的心脏。我一直以为人本来就是自私的，所有人都这样，但是不会用这份自私伤害别人。可是，我忘记了那是对有原则的人来说的，是对心是柔软的善良的人来说的 后来我强迫自己回忆思考，尽管每多想起一句，仅仅是一句就能让我感到恶心到吐。就是为了弄懂这些恶心的玩意到底是什么东西。还好那段时间身体不好，把很多事情全部压下去，被迫逃离，给了自己一丝喘气，还能好好活着的机会 我感觉与其说思考，不如说我在惩罚自己，惩罚自己的愚蠢，给自己带来的伤害 我用记忆的淡忘，尽力的保护自己。时间越久忘的越多，可是总有一些东西挥之不去。那些没被好好保护心疼的我自己缩了起来，每每当那些记忆来临的时候，它总会出来，提醒我为什么当时放任别人伤害它，为什么没有保护好它。这是我最对不起自己的地方
@@ -227,6 +274,11 @@
             <li>
                 <a href="http://localhost:1313/categories/ajing/" title="阿静">
                     <span>阿静</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/100days/" title="💖 100 Days">
+                    <span>💖 100 Days</span>
                 </a>
             </li>
         </ul>

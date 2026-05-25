@@ -1,0 +1,48 @@
+<style>
+    .falling-item {
+        position: fixed;
+        top: -10%;
+        z-index: 9999;
+        user-select: none;
+        /* 这个属性非常关键，确保特效只是“幻影”，不会阻挡读者用鼠标点击文章链接 */
+        pointer-events: none; 
+        animation: fall linear forwards;
+    }
+    
+    /* 定义下落和旋转的动画轨迹 */
+    @keyframes fall {
+        0% { transform: translateY(-10vh) rotate(0deg) scale(1); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg) scale(0.5); opacity: 0; }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 🔮 特效字符库：你可以随时把这里的符号换成 '❄️' (雪花), '💖' (爱心), 或者 '🍂' (落叶)
+        const items = ['🌸', '💖', '✨']; 
+        
+        // ⏱️ 发生频率：每 300 毫秒在屏幕顶部生成一个飘落物
+        const effectInterval = setInterval(() => {
+            const item = document.createElement('div');
+            item.className = 'falling-item';
+            
+            // 随机抽取一个字符
+            item.innerText = items[Math.floor(Math.random() * items.length)];
+            
+            // 随机生成水平起始位置 (0% 到 100% 屏幕宽度)
+            item.style.left = Math.random() * 100 + 'vw';
+            
+            // 随机生成下落速度 (4 到 7 秒之间落到底部)
+            item.style.animationDuration = (Math.random() * 3 + 4) + 's'; 
+            
+            // 随机生成大小 (10px 到 25px 之间)
+            item.style.fontSize = (Math.random() * 15 + 10) + 'px'; 
+            
+            document.body.appendChild(item);
+
+            // 🧹 自动清理：动画结束后自动删掉这个元素，保证网页绝对不卡顿
+            setTimeout(() => { item.remove(); }, 7000);
+            
+        }, 200); // <-- 想让花瓣多一点，可以把 300 改成 150；想少一点可以改成 600
+    });
+</script>
