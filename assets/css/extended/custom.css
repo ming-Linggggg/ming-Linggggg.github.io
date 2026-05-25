@@ -1,0 +1,164 @@
+/* =========================================
+   全局背景图片设置 (仅图片透明，不影响文字)
+========================================= */
+
+/* 1. 先把 body 本身的背景设为透明，把舞台让出来 */
+body, body.dark {
+    background: transparent !important; 
+}
+
+/* 2. 使用 ::before 伪元素在底层单独放置背景图片并调整透明度 */
+body::before {
+    content: "";
+    position: fixed;   /* 固定在屏幕上 */
+    top: 0;
+    left: 0;
+    width: 100vw;      /* 宽度铺满视口 */
+    height: 100vh;     /* 高度铺满视口 */
+    
+    background-image: url('/images/3.jpg');
+    background-size: cover;          
+    background-position: center;     
+    background-repeat: no-repeat;
+    
+    /* 👇 这里是图片透明度的控制阀门 */
+    opacity: 0.6; /* 0.6 表示图片有 60% 的不透明度，40% 的透明度 */
+    
+    z-index: -1;       /* 保证图片永远在最底层，绝不遮挡你的文章内容 */
+}
+
+/* 3. 确保网页中间的容器依然透明，让背景图片透出来 */
+.header, .main, .footer {
+    background: transparent !important;
+}
+
+/* 4. （可选）如果你觉得透明后底色太亮或太暗，可以给 body 设置一个底色 */
+/* 例如，在浅色模式下设置一个非常浅的灰色底色，让透明的图片透出这种灰色 */
+/* body {
+    background-color: #f5f5f5 !important;
+}
+body.dark {
+    background-color: #1a1a1a !important;
+} 
+*/
+/* =========================================
+   100天纪念专属：时光轴样式 (Timeline)
+========================================= */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding-left: 20px;
+    /* 这是那条垂直的时间轴线，用了浪漫的粉色 */
+    border-left: 4px solid rgba(255, 105, 180, 0.6); 
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    /* 添加一点交互动画，鼠标悬停时会微微向右浮动 */
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(8px);
+}
+
+/* 时间轴上的发光小圆点 */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -29px; /* 精确计算，让圆点对齐在线的中央 */
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ff69b4; /* 粉色圆点 */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.8); /* 发光特效 */
+}
+
+/* 纪念日期的字体样式 */
+.timeline-date {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 12px;
+}
+
+/* 承载文字和图片的卡片 */
+.timeline-content {
+    background-color: rgba(255, 255, 255, 0.85); /* 浅色半透明卡片底色 */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 完美适配深色模式 (Dark Mode) */
+body.dark .timeline-content {
+    background-color: rgba(29, 30, 32, 0.85); /* 深色半透明卡片底色 */
+    color: #eee;
+}
+
+/* 覆盖之前时间轴图片的默认设置，防止排版冲突与图片变形 */
+.timeline-content .carousel-slides img {
+    width: 100%;           /* 让每张幻灯片占满轮播容器的宽度 */
+    height: 400px;         /* 设定一个统一的相册“相框”高度，推荐 350px - 500px 之间 */
+    object-fit: contain;   /* 核心魔法：保持图片原始长宽比，完整显示，绝不拉伸变形 */
+    background-color: rgba(0, 0, 0, 0.03); /* 可选：给相框未填满的边缘加一点极淡的阴影底色，显得更高级 */
+    flex-shrink: 0; 
+    margin-top: 0 !important;
+    border-radius: 8px;
+}
+/* =========================================
+   100天纪念专属：相册轮播组件 (Carousel)
+========================================= */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* 隐藏超出边界的图片 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 丝滑的滑动动画 */
+}
+
+/* 覆盖之前时间轴图片的默认设置，防止排版冲突 */
+.timeline-content .carousel-slides img {
+    width: 100%;
+    flex-shrink: 0; 
+    margin-top: 0 !important;
+    border-radius: 8px;
+}
+
+/* 左右手动切换按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
